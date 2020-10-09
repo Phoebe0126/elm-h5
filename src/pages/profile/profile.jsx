@@ -144,8 +144,8 @@ class Profile extends Component {
               </div>
             </div>
             <div onClick={this.handleClick.bind(this, 'unfinished')} className='myorder' key='i5'>
-              <div className='icon-yk_fangkuai_fill order-icon'></div>
-              <div className='myorder-text'>
+            <div className='icon-yk_fangkuai_fill order-icon'></div>
+            <div className='myorder-text'>
                 <span>服务中心</span>
                 <div className='icon-arrow-right'></div>
               </div>
@@ -161,19 +161,19 @@ class Profile extends Component {
           </section>
         </section>
         <Footer key='s3'/>
-        </QueueAnim>
+      </QueueAnim>
       {this.state.hasAlert&&<AlertTip logout={()=> {return false}}  closeTip={this.handleClick} alertText={this.state.alertText}/>}
       </div>
     )
   }
 }
-
+// 建立一个从（外部的）state对象到（UI 组件的）props对象的映射关系
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userInfo
   }
 }
-
+// 建立 UI 组件的参数到store.dispatch方法的映射
 const mapDispatchToProps = (dispatch) => {
   return {
     saveUserInfo: (userInfo) => dispatch(saveUserInfo(userInfo))

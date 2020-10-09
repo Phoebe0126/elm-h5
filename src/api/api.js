@@ -191,7 +191,7 @@ class API extends Server{
    * @param {*} keyword
    * @memberof API
    */
-  async cityGuess( keyword){
+  async cityGuess(keyword){
     try{
       let result = await this.axios('get', '/v1/cities?type=guess'); 
       if(result){
@@ -278,6 +278,29 @@ class API extends Server{
       throw err;
     }
   }
+
+  /**
+   *用途: 修改密码
+   * @param {*} data
+   * @memberof API
+   */
+  async changePassword(data){
+    try{
+      const result = await this.axios('post', '/v2/changepassword', data) 
+      if (result.status !== 0 && (result instanceof Object)) {
+        return result || []
+      } else {
+        let err = {
+          tip: '修改密码失败',
+          response: result,
+        }
+        return err
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
 
 }
 

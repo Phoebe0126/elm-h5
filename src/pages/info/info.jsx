@@ -75,62 +75,62 @@ class Info extends Component {
         <QueueAnim type='bottom'>
           <Header title="账户消息" goBack={this.goBack} key='o1'/>
           <section className='profile-info' key='o2'>
-          <QueueAnim>
-            <section className='headportrait' key='k1'>
-              <input type="file" className='profile-info-upload' onChange={this.uploadImg}/>
-              <h2>头像</h2>
-              <div className='info-avatar'>
-                  <img src={this.props.userInfo.imgpath} alt="img id wrong" className='headport-top'/>
-                  <div className='icon-arrow-right'></div>
+            <QueueAnim>
+              <section className='headportrait' key='k1'>
+                <input type="file" className='profile-info-upload' onChange={this.uploadImg}/>
+                <h2>头像</h2>
+                <div className='info-avatar'>
+                    <img src={this.props.userInfo.imgpath} alt="img id wrong" className='headport-top'/>
+                    <div className='icon-arrow-right'></div>
+                </div>
+              </section>
+              <Link to='/setuser/name' className='info-router' key='k2'>
+                <section className='headportrait headportraitwo'>
+                  <h2>用户名</h2>
+                  <div className='info-avatar'>
+                    <div>{this.props.userInfo.username}</div>
+                    <div className='icon-arrow-right'></div>
+                  </div>
+                </section>
+              </Link>
+              <Link to='/setuser/address' className='info-router' key='k3'>
+                <section className='headportrait headportraithree'>
+                  <h2>收获地址</h2>
+                  <div className='info-avatar'>
+                    <div>{this.state.username}</div>
+                    <div className='icon-arrow-right'></div>
+                  </div>
+                </section>
+              </Link>
+              <section className="bind-phone" key='k4'>
+                  账号绑定
+              </section>
+              <div onClick={this.handleClick.bind(this, 'tele')} className='info-router' key='k5'>
+                <section className='headportrait headportraitfour'>
+                  <div className='headport-phone'>
+                    <div className='icon-shouji'></div>
+                    <h2>手机</h2>
+                  </div>
+                  <div className='info-avatar'>
+                    <div className='icon-arrow-right'></div>
+                  </div>
+                </section>
               </div>
-            </section>
-            <Link to='/setuser/name' className='info-router' key='k2'>
-              <section className='headportrait headportraitwo'>
-                <h2>用户名</h2>
-                <div className='info-avatar'>
-                  <div>{this.props.userInfo.username}</div>
-                  <div className='icon-arrow-right'></div>
-                </div>
+              <section className="bind-phone" key='k6'>
+                  安全设置
               </section>
-            </Link>
-            <Link to='/setuser/address' className='info-router' key='k3'>
-              <section className='headportrait headportraithree'>
-                <h2>收获地址</h2>
-                <div className='info-avatar'>
-                  <div>{this.state.username}</div>
-                  <div className='icon-arrow-right'></div>
-                </div>
-              </section>
-            </Link>
-            <section className="bind-phone" key='k4'>
-                账号绑定
-            </section>
-            <div onClick={this.handleClick.bind(this, 'tele')} className='info-router' key='k5'>
-              <section className='headportrait headportraitfour'>
-                <div className='headport-phone'>
-                  <div className='icon-shouji'></div>
-                  <h2>手机</h2>
-                </div>
-                <div className='info-avatar'>
-                  <div className='icon-arrow-right'></div>
-                </div>
-              </section>
-            </div>
-            <section className="bind-phone" key='k6'>
-                安全设置
-            </section>
-            <div onClick={this.handleClick.bind(this, 'password')} className='info-router' key='k7'>
-              <section className='headportrait headportraithree'>
-                <h2>登录密码</h2>
-                <div className='info-avatar'>
-                  <div className='headport-modify'>修改</div>
-                  <div className='icon-arrow-right'></div>
-                </div>
-              </section>
-            </div>
-            <section onClick={this.handleClick.bind(this, 'logout')} className='exit-login' key='k8'>退出登录</section>
-             </QueueAnim>
-          </section>
+              <Link to='/setuser/password' className='info-router' key='k7'>
+                  <section className='headportrait headportraithree'>
+                    <h2>登录密码</h2>
+                    <div className='info-avatar'>
+                      <div className='headport-modify'>修改</div>
+                      <div className='icon-arrow-right'></div>
+                    </div>
+                  </section>
+              </Link>
+              <section onClick={this.handleClick.bind(this, 'logout')} className='exit-login' key='k8'>退出登录</section>
+            </QueueAnim>
+         </section>
       {this.state.hasAlert&&<AlertTip logout={this.logout} closeTip={this.handleClick} alertText={this.state.alertText}/>}
       </QueueAnim>
       </div>

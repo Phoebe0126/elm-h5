@@ -16,7 +16,10 @@
       transform: scale(1);
     }
 }
-
+.site-loader{
+  @include positionCenter(fixed);
+  z-index: 101;
+}
 .icon-back{
   position: fixed;
   top: 0;
@@ -156,19 +159,6 @@
     flex:1;
     overflow-y: hidden;
     position: relative;
-    .menu-left{
-      width: 3.8rem;
-      .menu-left-li{
-        padding: .7rem .3rem;
-        border-bottom: 0.025rem solid #ededed;
-        img{
-          @include wh(.5rem, .6rem);
-        }
-        span{
-          @include font(.6rem, #666);
-        }
-      }
-    }
     .menu-right{
       flex:4;
       overflow-y: auto;

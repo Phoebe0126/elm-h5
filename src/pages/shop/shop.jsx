@@ -8,7 +8,8 @@ import {imgUrl} from "@/config/envconfig";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import API from "@/api/api"
 import AlertTip from '@/components/alert_tip/alert_tip'
-import {getImgPath} from '@/utils/commons'
+import MenuList from '@/components/menu_list/menu_list'
+import Loader from '@/components/loader/loader'
 
 class Shop extends Component {
   static propTypes = {
@@ -171,6 +172,9 @@ class Shop extends Component {
   render() {
     return (
       <div className="shop-container">
+        {!this.state.foodList.length?<div className='site-loader'>
+          <Loader/>
+        </div>:''}
         <div className="icon-back" onClick={this.goBack} />
         <header className="shop-detail-header">
           <img
@@ -230,19 +234,11 @@ class Shop extends Component {
                {this.state.show&&<div className='food-container'>
                 <div className='menu-container'>
                     <div className="menu-left">
-                      <ul>
-                        {
-                          this.state.menuList.map((item, index) => {
-                            return (
-                              <li className={this.state.activeIndex===index?'activity-menu menu-left-li': 'menu-left-li'} key={index} onClick={this.activeMenu.bind(this, index)}>
-                                <img src={item.icon_url?getImgPath(item.icon_url):''} alt=""/>
-                                <span>{item.name}</span>
-                                <span className='category'></span>
-                              </li>
-                            )
-                          })
-                        }
-                      </ul>
+                      <MenuList 
+                        menuList={this.state.menuList}
+                        activeIndex={this.state.activeIndex}
+                        activeMenu={this.activeMenu}
+                      />
                     </div>
                     <div className="menu-right">
                         <ul>
@@ -269,10 +265,11 @@ class Shop extends Component {
                                             <h3 className="food-description-head">
                                               <strong className='description-foodname'>{food.name}</strong>
                                               {
-                                                food.attributes.length?<ul className='attributes-ul'>
+                                                food.attributes.length > 0?<ul className='attributes-ul'>
                                                   {
                                                     food.attributes.map((attribute, fIndex) => {
                                                       return (
+                                                        attribute && 
                                                         <li key={fIndex}  className={attribute.icon_name==='新'?'attribute-new':''}>
                                                           <p>{attribute.icon_name}</p>
                                                         </li>

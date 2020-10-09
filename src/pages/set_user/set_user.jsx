@@ -10,6 +10,7 @@ import Name from './name/name'
 import Address from './address/address'
 import Add from './add/add'
 import AddDetail from './add_detail/add_detail'
+import ChangePassword from './password/password'
 import {saveAttrInfo} from '@/store/action'
 
 class SetUser extends Component {
@@ -48,6 +49,9 @@ class SetUser extends Component {
       case 'add_detail':
         headerTitle = '搜索地址'
         break
+      case 'password':
+        headerTitle = '修改密码'
+        break
       default: 
         headerTitle = ''
     }
@@ -82,6 +86,7 @@ class SetUser extends Component {
           <Route path={`${this.props.match.path}/address`} component={Address} />
           <Route path={`${this.props.match.path}/add/:type`} component={Add} />
           <Route path={`${this.props.match.path}/add_detail`} component={AddDetail} />
+          <Route path={`${this.props.match.path}/password`} component={ChangePassword} />
         </Switch>
         </QueueAnim>
       </div>
