@@ -1,0 +1,69 @@
+@import '../../style/mixin.scss';
+
+.rating-list {
+    background-color: #fff;
+    .rating-item {
+        @include flex(start,start);
+        border-top: 1px solid #f1f1f1;
+        padding: .2rem .3rem;
+        .avatar {
+            width: 1.5rem;
+            margin: .5rem;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+        .rating-info {
+            flex: 1;
+            .top {
+                @include flex(space-between);
+                .nickname {
+                    color: #666;
+                    font-size: .6rem;
+                }
+                .created-time {
+                    color: #999;
+                    font-size: .4rem;
+                    margin-right: .2rem;
+                }
+            }
+            .detail {
+                .stars {
+                    @include flex(start);
+                    color: #ff9a0d;
+                    .icon-wuxing{
+                        transform: scale(0.9);
+                        font-size: 0.03rem;
+                    }
+                }
+                .comment {
+                    color: #666;
+                    font-size: .5rem;
+                }
+                .food-imgs {
+                    @include flex(start);
+                    img {
+                        width: 3rem;
+                        height: 3rem;
+                        margin: .1rem .3rem;
+                    }
+                }
+                .food-names {
+                    @include flex(start);
+                    .food-name {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        font-size: .55rem;
+                        color: #999;
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+

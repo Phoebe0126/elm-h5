@@ -53,7 +53,7 @@ class ShopList extends Component {
           {this.state.shopListArr.map((item, index) => {
             return (
               <Link
-                to={"/shop/" + item.id}
+                to={`/shop/${item.id}`}
                 className="shop-item"
                 key={"l" + index}
               >

@@ -301,6 +301,74 @@ class API extends Server{
     }
   }
 
+  /**
+   *用途: 获取商家的评价分数
+   * @param {*} restaurantId
+   * @memberof API
+   */
+  async getRatingScores(restaurantId){
+    try{
+      let result = await this.axios('get', `/ugc/v2/restaurants/${restaurantId}/ratings/scores`); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '获取商家的评价分数失败',
+          response: result,
+          url: '//elm.cangdu.org/ugc/v2/restaurants/1/ratings/scores',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+
+  /**
+   *用途: 获取商家的评价分类
+   * @param {*} restaurantId
+   * @memberof API
+   */
+  async getRatingTags(restaurantId){
+    try{
+      let result = await this.axios('get', `/ugc/v2/restaurants/${restaurantId}/ratings/tags`); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '获取商家的评价分类失败',
+          response: result,
+          url: '//elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+
+  /**
+   *用途: 获取商家的评价信息
+   * @param {*} restaurantId
+   * @memberof API
+   */
+  async getRatingInfo(restaurantId, data){
+    try{
+      let result = await this.axios('get', `/ugc/v2/restaurants/${restaurantId}/ratings` + getUrlConcat(data)); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '获取商家的评价信息失败',
+          response: result,
+          url: '//elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
 
 }
 

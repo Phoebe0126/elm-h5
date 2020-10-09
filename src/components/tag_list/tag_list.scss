@@ -1,0 +1,26 @@
+@import '../../style/mixin.scss';
+
+.tag-list-container {
+    @include flex(start);
+    margin-top: .5rem;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: .5rem .3rem;
+    .tag {
+        font-size: .6rem;
+        padding: .3rem;
+        margin: .1rem .3rem;
+        background-color: #ebf5ff;
+        border: 1px;
+        border-radius: .3rem;
+        color: #6d7885;
+    }
+    .tag-unsatisfied {
+        background-color: #f5f5f5;
+        color: #aaa;
+    }
+    .tag-active {
+        background-color: #3190e8;
+        color: #fff;
+    }
+}

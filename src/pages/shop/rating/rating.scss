@@ -1,0 +1,49 @@
+@import "../../../style/mixin.scss";
+
+.rating {
+    &-header {
+        padding: .5rem 0;
+        background: #fff;
+        @include flex(space-between);
+        &-left {
+            text-align: center;
+            padding: .2rem 1rem;
+            .rating-bold {
+                color: #f60;
+                font-size: 1.2rem;
+            }
+            :nth-child(2) {
+                color: #666;
+                font-size: .7rem;
+            }
+            :nth-child(3) {
+                color: #999;
+                font-size: .5rem;
+            }
+        }
+        &-right {
+            color: #666;
+            font-size: .7rem;
+            padding: .2rem 1rem;
+            div {
+                @include flex(start);
+                margin-top: .1rem;
+            }
+            span, .stars {
+                color: #ff9a0d;
+                margin-left: .2rem;
+            }
+            .minute {
+                color: #999;
+                font-size: .5rem;
+            }
+            .stars {
+                @include flex(start);
+                .icon-wuxing{
+                    transform: scale(0.9);
+                    font-size: 0.03rem;
+                }
+            }
+        }
+    }
+}

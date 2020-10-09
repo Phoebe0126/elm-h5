@@ -10,6 +10,7 @@ import API from "@/api/api"
 import AlertTip from '@/components/alert_tip/alert_tip'
 import MenuList from '@/components/menu_list/menu_list'
 import Loader from '@/components/loader/loader'
+import Rating from './rating/rating'
 
 class Shop extends Component {
   static propTypes = {
@@ -17,6 +18,7 @@ class Shop extends Component {
     geohash: PropTypes.array.isRequired
   };
   state = {
+    rating: '',
     shopId: "",
     shopDetailData: "",
     show: false,
@@ -172,7 +174,7 @@ class Shop extends Component {
   render() {
     return (
       <div className="shop-container">
-        {!this.state.foodList.length?<div className='site-loader'>
+        {this.state.shopDetailData.length === 0?<div className='site-loader'>
           <Loader/>
         </div>:''}
         <div className="icon-back" onClick={this.goBack} />
@@ -226,7 +228,8 @@ class Shop extends Component {
           <div><span onClick={this.changeShowType.bind(this, 'food')} className={this.state.active==='food'?'activity-show':''}>商品</span></div>
           <div><span onClick={this.changeShowType.bind(this, 'rating')} className={this.state.active==='rating'?'activity-show':''}>评价</span></div>
         </div>
-        <ReactCSSTransitionGroup
+        {
+          this.state.active==='food' && <ReactCSSTransitionGroup
           component={this.FirstChild}
           transitionName="shop"
           transitionEnterTimeout={200}
@@ -369,8 +372,12 @@ class Shop extends Component {
                     }
                 </ReactCSSTransitionGroup>
                </div>}
-      </ReactCSSTransitionGroup>
-      {this.state.hasAlert&&<AlertTip logout={()=> {return false}}  closeTip={this.handleClick} alertText={this.state.alertText}/>}
+          </ReactCSSTransitionGroup>
+        }
+        {
+          this.state.active==='rating' && <Rating id={this.state.shopId} rating={this.state.rating}/>
+        }
+        {this.state.hasAlert&&<AlertTip logout={()=> {return false}}  closeTip={this.handleClick} alertText={this.state.alertText}/>}
       </div>
     );
   }
