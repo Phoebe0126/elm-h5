@@ -7,7 +7,8 @@ let defaultState = {
   hasAddressList: [], // 已有的地址
   operate: 'edit',
   userInfo: {},
-  geohash: []
+  geohash: [],
+  cart: {}
 }
 
 // 用户消息
@@ -22,6 +23,8 @@ export default (state = defaultState, action = {}) => {
       return {...state, ...{[action.datatype]: action.value}};
     case user.MODIFY_USERINFO:
       return {...state, userInfo: {...state.userInfo, [action.key]: action.value}};
+    case user.MODIFY_CART:
+      return {...state, cart: {...state.cart, [action.key]: action.value}};
     default:
       return state
   }

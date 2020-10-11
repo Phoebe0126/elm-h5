@@ -11,6 +11,7 @@ import AlertTip from '@/components/alert_tip/alert_tip'
 import MenuList from '@/components/menu_list/menu_list'
 import Loader from '@/components/loader/loader'
 import Rating from './rating/rating'
+import { setStore, getStore } from '../../utils/commons'
 
 class Shop extends Component {
   static propTypes = {
@@ -69,7 +70,41 @@ class Shop extends Component {
     })
     return menu
   }
+  async checkout () {
+    const cartList = this.state.foodList.filter(cart => cart.qty !== 0)
+
+    const entities = cartList.map(food => {
+        const entity = {
+          attrs: food.attrs,
+          extra: {},
+          id: food.item_id,
+          name: food.name,
+          packing_fee: food.specfoods[0].packing_fee,
+          price: food.specfoods[0].price,
+          quantity: food.qty,
+          sku_id: food.specfoods[0].sku_id,
+          specs: food.specfoods[0].specs,
+          stock: food.specfoods[0].stock
+        }
+        return entity
+    })
+    
+    const cartObj = !!getStore('cart') ? JSON.parse(getStore('cart')) : {}
+
+    cartObj[this.state.shopId] = entities
+    setStore('cart', cartObj)
+
+  }
+
   handleClick = (type) => {
+    if (type === 'checkout') {
+      // 加入购物车
+      this.checkout();
+      // 跳转到结算页面
+      this.props.history.push('/checkout/' + this.props.geohash.join(',') + '/' + this.state.shopId)
+      return
+    }
+
     let alertText
     switch (type){
       case 'download':
@@ -84,6 +119,8 @@ class Shop extends Component {
       hasAlert: !this.state.hasAlert,
       alertText,
     })
+
+
   }
   calculateMoney = () => {
     let totalPrice = 0
@@ -126,6 +163,13 @@ class Shop extends Component {
       displayList: menu.length?menu[0].foods:[],
       count: 0,
     })
+    const cartObj = JSON.parse(getStore('cart'))
+    if (!!cartObj) {
+      const cartList = cartObj[id]
+      cartList.forEach(food => {
+        this.handleAddFoodCount(foodList.findIndex(item => item.item_id === food.id), food.quantity)
+      })
+    }
   };
   // 添加, 减少商品
   handleAddFoodCount = (index, type) => {
@@ -326,7 +370,7 @@ class Shop extends Component {
                       <div>配送费¥{this.state.shopDetailData.float_delivery_fee}</div>
                     </div>
                   </div>
-                  <div onClick={this.handleClick.bind(this, 'unfinished')} className={this.state.miniMoney>0?"gotopay":'gotopay gotopay-active'}>
+                  <div onClick={this.handleClick.bind(this, 'checkout')} className={this.state.miniMoney>0?"gotopay":'gotopay gotopay-active'}>
                   {this.state.miniMoney>0?<div className='gotopay-button-style'>还差¥{this.state.miniMoney}起送</div>
                       :<div  className='gotopay-button-style'>去结算</div>}
                   </div>

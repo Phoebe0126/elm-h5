@@ -18,6 +18,7 @@ class Address extends Component {
   getAddress = async () =>{
     const res = await API.getAddress(getStore('user_id'))
     this.props.saveAttrInfo('addressList', res)
+    this.props.saveAttrInfo('hasAddressList', res)
   }
   handleDelete = (index) => {
     let hasAddressList = 

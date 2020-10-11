@@ -370,6 +370,73 @@ class API extends Server{
     }
   }
 
+  /**
+   *用途: 加入购物车
+   * @param {*} data
+   * @memberof API
+   */
+  async checkout(data){
+    try{
+      const result = await this.axios('post', '/v1/carts/checkout', data) 
+      if (result.status !== 0 && (result instanceof Object)) {
+        return result || []
+      } else {
+        let err = {
+          tip: '加入购物车失败',
+          response: result,
+        }
+        return err
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
+  /**
+   *用途: 获取备注信息
+   * @param {*} cartId
+   * @memberof API
+   */
+  async getRemarks(cartId){
+    try{
+      let result = await this.axios('get', `/v1/carts/${cartId}/remarks`); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '获取备注信息失败',
+          response: result,
+          url: '//elm.cangdu.org/v1/carts/1/remarks',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+
+  
+  /**
+   *用途: 增加收货地址
+   * @param {*} data
+   * @memberof API
+   */
+  async addAddress(userId, data){
+    try{
+      const result = await this.axios('post', `/v1/users/${userId}/addresses`, data) 
+      if (result.status !== 0 && (result instanceof Object)) {
+        return result || []
+      } else {
+        let err = {
+          tip: '添加地址失败',
+          response: result,
+        }
+        return err
+      }
+    } catch (err) {
+      throw err
+    }
+  }
 }
 
 export default new API()

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {saveAttrInfo} from '@/store/action'
 import QueueAnim from 'rc-queue-anim'
+import API from '../../../api/api'
 import './add.scss'
 
 class Add extends Component {
@@ -39,9 +40,28 @@ class Add extends Component {
       standbytelenum: this.state.standbytelenum,
       message: this.state.message,
     })
+    // 发请求
+    this.addAddress()
     this.props.saveAttrInfo('hasAddressList', hasAddressList)
     this.props.history.push('/setuser/address')
   }
+  async addAddress () {
+    const userId = this.props.userInfo.user_id
+    const data = {
+      address: this.props.addressName,
+      address_detail: this.state.mesthree,
+      geohash: this.props.geohash,
+      name: this.state.message,
+      phone: this.state.telenum,
+      tag: '无',
+      sex: 1,
+      phone_bk: '',
+      tag_type: 1
+    }
+    const res = await API.addAddress(userId, data)
+    console.log(res)
+  }
+
   componentDidMount () {
     if (this.props.match.params.type === 'fromadd') {
       this.props.saveAttrInfo('addressName', '')
@@ -191,7 +211,8 @@ const mapStateToProps = (state) => {
     userInfo: state.userInfo,
     addressName: state.addressName,
     temMessage: state.temMessage,
-    hasAddressList: state.hasAddressList
+    hasAddressList: state.hasAddressList,
+    geohash: state.geohash
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -26,3 +26,12 @@ export const modifyUserInfo = (key, value) => {
   }
 }
 
+// 修改购物车信息
+export const modifyCart = (key, value) => {
+  return {
+    type: user.MODIFY_CART,
+    key,
+    value
+  }
+}
+

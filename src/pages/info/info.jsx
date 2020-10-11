@@ -95,7 +95,7 @@ class Info extends Component {
               </Link>
               <Link to='/setuser/address' className='info-router' key='k3'>
                 <section className='headportrait headportraithree'>
-                  <h2>收获地址</h2>
+                  <h2>收货地址</h2>
                   <div className='info-avatar'>
                     <div>{this.state.username}</div>
                     <div className='icon-arrow-right'></div>

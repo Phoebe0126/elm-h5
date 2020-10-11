@@ -1,0 +1,55 @@
+@import '../../../style/mixin.scss';
+
+.address-container {
+    background-color: #fff;
+    width: 100%;
+    @include flex(start);
+    margin-top: 2rem;
+    height: 3rem;
+    .address-img {
+        margin-left: .5rem;
+        width: 1rem;
+        height: 1rem;
+        background-image: url(../../../assets/imgs/address.png);
+        background-size: contain;
+    }
+    .user {
+        font-size: .7rem;
+        margin: 0 .5rem;
+        flex: 1;
+        span {
+            margin: 0 .1rem;
+        }
+        .user-info {
+            @include flex(start);
+            .name {
+                font-weight: bold;
+                color: #333;
+                font-size: .8rem;
+                line-height: .8rem;
+            }
+            .mobile {
+                font-size: .6rem;
+            }
+        }
+        .user-address {
+            font-size: .5rem;
+            .detail {
+                color: #777;
+            }
+            .tag {
+                background-color: rgb(49, 144, 232);
+                color: #fff;
+                height: .6rem;
+                border-radius: .15rem;
+                line-height: .6rem;
+                padding: 0 .2rem;
+            }
+        }
+    }
+    .icon-arrow-right {
+        margin-right: .5rem;
+        color: #999;
+        font-size: .8rem;
+    }
+}
