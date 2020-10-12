@@ -27,8 +27,6 @@ class SetUser extends Component {
     let path = this.props.location.pathname.split('/')[2]
     if (path=== 'add') {
       this.props.history.push('/setuser/address')
-    } else if (path === 'address') {
-      this.props.history.push('/info')
     } else {
       this.props.history.goBack()
     }

@@ -10,6 +10,7 @@ const shop = asyncComponent(() => import("@/pages/shop/shop"))
 const food = asyncComponent(() => import("@/pages/food/food"))
 const technology = asyncComponent(() => import("@/pages/technology/technology"))
 const checkout = asyncComponent(() => import("@/pages/checkout/checkout"))
+const remark = asyncComponent(() => import("@/pages/remark/remark"))
 
 export default class RouteConfig extends Component {
   render () {
@@ -22,7 +23,8 @@ export default class RouteConfig extends Component {
           <Route path="/msite" component= {msite}/>
           <Route path="/setuser"  component= {setUser}/>
           <Route path="/shop/:id"  component= {shop}/>
-          <Route path="/food/:geohash/:id/:title"  component= {food}/>
+          <Route path="/food/:id"  component= {food}/>
+          <Route path="/checkout/remark/:id"  component= {remark}/>
           <Route path="/technology"  component= {technology}/>
           <Route path="/checkout/:geohash/:id"  component= {checkout}/>
           <Redirect exact from='/' to='/profile'/>

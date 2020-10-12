@@ -1,0 +1,45 @@
+@import '../../style/mixin';
+
+.checkout-container {
+    padding-bottom: 3rem;
+    .payway {
+        background-color: #fff;
+        margin-top: .5rem;
+        div {
+            font-size: .6rem;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .5rem;
+            margin-top: .5rem;
+        }
+        .pay-type {
+            font-size: .7rem;
+            color: #666;
+        }
+    }
+    
+    .fixed-block {
+        position: fixed;
+        color: #fff;
+        bottom: 0;
+        width: 100%;
+        font-size: .75rem;
+        @include flex(space-between);
+        background-color: #3c3c3c;
+    
+        .amount {
+            padding: .5rem;
+            @include flex(start);
+            span {
+                margin-left: .5rem;
+            }
+        }
+        .confirm {
+            background-color: #56d176;
+            height: 100%;
+            padding: .5rem;
+        }
+    }
+}

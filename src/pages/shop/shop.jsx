@@ -93,10 +93,10 @@ class Shop extends Component {
 
     cartObj[this.state.shopId] = entities
     setStore('cart', cartObj)
-
   }
 
   handleClick = (type) => {
+
     if (type === 'checkout') {
       // 加入购物车
       this.checkout();
@@ -164,8 +164,9 @@ class Shop extends Component {
       count: 0,
     })
     const cartObj = JSON.parse(getStore('cart'))
-    if (!!cartObj) {
-      const cartList = cartObj[id]
+    const cartList = cartObj[id]
+
+    if (cartList) {
       cartList.forEach(food => {
         this.handleAddFoodCount(foodList.findIndex(item => item.item_id === food.id), food.quantity)
       })

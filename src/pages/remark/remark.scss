@@ -1,0 +1,63 @@
+@import '../../style/mixin';
+
+.remark-wrapper {
+    width: 100%;
+    padding-top: 2rem;
+    position: relative;
+    button {
+        margin-top: .5rem;
+        @include font(.7rem, #fff);
+        background-color: #4cd964;
+        padding: .5rem 0;
+        border: 1px;
+        border-radius: 0.15rem;
+        text-align: center;
+        width: 90%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .remark-others, .remark-quick {
+        background-color: #fff;
+        padding: 0 .5rem;
+        margin-top: .5rem;
+        .name {
+            font-size: .65rem;
+            color: #333;
+            line-height: 2rem;
+        }
+    }
+    .remark-others {
+        padding: .3rem;
+        padding-bottom: .7rem;
+        textarea {
+            width: 100%;
+            background-color: #f9f9f9;
+            border: .025rem solid #eee;
+            resize: none;
+            min-height: 4.5rem;
+            border-radius: .2rem;
+            font-size: .6rem;
+            color: #666;
+            padding: .5rem;
+        }
+    }
+    .remark-quick {
+        .remark-tags {
+            @include flex(start);
+            flex-wrap: wrap;
+            .tag {
+                padding: .3rem .5rem;
+                font-size: .6rem;
+                margin-right: .4rem;
+                margin-bottom: .5rem;
+                border: .025rem solid #3190e8;
+                border-radius: .4rem;
+            }
+            .active {
+                color: #fff;
+                background-color: #3190e8;
+            }
+        }
+    }
+}

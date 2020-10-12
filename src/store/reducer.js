@@ -8,7 +8,7 @@ let defaultState = {
   operate: 'edit',
   userInfo: {},
   geohash: [],
-  cart: {}
+  remark: ''
 }
 
 // 用户消息

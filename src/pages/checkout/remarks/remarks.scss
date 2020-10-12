@@ -1,0 +1,34 @@
+@import '../../../style/mixin';
+
+.remarks-container {
+    background-color: #fff;
+    margin-top: .5rem;
+    color: #aaa;
+    font-size: .6rem;
+    a {
+        color: #aaa;
+    }
+    div {
+        @include flex(space-between);
+        padding: .5rem;
+        margin-top: .2rem;
+    }
+    .order, .invoice {
+        .name {
+            width: 5rem;
+            color: #666;
+        }
+        .value {
+            text-align: right;
+            width: 11rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: none;
+        }
+    }
+    .order {
+        .name {
+            font-size: .7rem;
+        }
+    }
+}
