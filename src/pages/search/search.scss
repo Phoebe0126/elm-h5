@@ -1,0 +1,69 @@
+@import '../../style/mixin.scss';
+
+.search-container {
+    padding-top: 2rem;
+    .search-input {
+        @include flex(start);
+        background-color: #fff;
+        padding: .5rem;
+        input {
+            flex: 4;
+            border: .025rem solid #e4e4e4;
+            font-size: .65rem;
+            color: #333;
+            border-radius: .125rem;
+            background-color: #f2f2f2;
+            font-weight: 700;
+            padding: .25rem;
+        }
+        button {
+            flex: 1;
+            border: .025rem solid #3190e8;
+            margin-left: .2rem;
+            font-size: .65rem;
+            color: #fff;
+            border-radius: .125rem;
+            background-color: #3190e8;
+            font-weight: 700;
+            padding: .25rem;
+        }
+    }
+    .search-history {
+        color: #666;
+        .title {
+            font-size: .6rem;
+            line-height: 2rem;
+            text-indent: .5rem;
+            font-weight: 700;
+        }
+        .history-list {
+            background-color: #fff;
+            border-bottom: .025rem solid #e4e4e4;
+            font: .7rem/2rem Microsoft YaHei;
+            padding: 0 .4rem;
+            background-color: #fff;
+            width: 100%;
+            .item {
+                color: #333;
+                @include flex(space-between);
+                .text {
+                    width: 80%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: .8rem;
+                }
+                .close {
+                    font-size: 1.5rem;
+                    color: #999;
+                }
+            }
+            .clear-button {
+                background-color: #fff;
+                color: #3190e8;
+                font-weight: 700;
+                text-align: center;
+            }
+        }
+    }
+}

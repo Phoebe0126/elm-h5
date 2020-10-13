@@ -22,7 +22,8 @@ class Msite extends Component {
     footTypes: [],
     title: '',
     text: 'fff',
-    imgBaseUrl: "https://fuss10.elemecdn.com"
+    imgBaseUrl: "https://fuss10.elemecdn.com",
+    shopListArr: []
   };
   getFoodTypes = async () => {
     let data = {
@@ -70,6 +71,7 @@ class Msite extends Component {
     });
     this.props.saveAttrInfo('geohash', [res.latitude, res.longitude])
     this.getPoisSite([res.latitude, res.longitude])
+    this.getShopList([res.latitude, res.longitude])
     this.getFoodTypes();
   }
   goHome = () => {
@@ -77,6 +79,14 @@ class Msite extends Component {
   }
   componentDidMount () {
     this.cityGuess()
+  }
+  async getShopList (geohash) {
+    let obj = {
+      latitude: geohash[0],
+      longitude: geohash[1],
+    };
+    const shopListArr = await API.getShopList(obj);
+    this.setState({shopListArr})
   }
   shouldComponentUpdate(nextProps, nextState) {   // 判断是否要更新render, return true 更新  return false不更新
     let refresh = !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
@@ -128,7 +138,7 @@ class Msite extends Component {
             <div className="icon-shangdian" />
             <span className="shop-header-title">附近商家</span>
           </header>
-          {this.state.footTypes.length?<ShopList geohash={this.state.geohash}/>:
+          {this.state.footTypes.length && this.state.shopListArr.length ?<ShopList isSubmit={true} shopListArr={this.state.shopListArr}/>:
             <div className="skeleton">
             <ul>
               {[1, 2, 3, 4].map((item, index) => {

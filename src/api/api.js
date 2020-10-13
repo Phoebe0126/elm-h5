@@ -437,6 +437,29 @@ class API extends Server{
       throw err
     }
   }
+
+  /**
+   *用途: 搜索餐馆
+   * @param {*} data
+   * @memberof API
+   */
+  async search(data){
+    try{
+      let result = await this.axios('get', `/v4/restaurants${getUrlConcat(data)}`); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '搜索地址失败',
+          response: result,
+          url: '//elm.cangdu.org/v4/restaurants',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
 }
 
 export default new API()
