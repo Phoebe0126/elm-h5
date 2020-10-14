@@ -86,7 +86,13 @@ class Search extends Component {
         const shopListArr = await API.search(obj);
         this.setState({shopListArr, isSearching: false})
     }
-    
+
+    removeSearchHistory (index) {
+        const historyList = this.state.historyList
+        historyList.splice(index, 1)
+        this.setState({historyList})
+    }
+
     searchFromHistory (keyword) {
         this.setState({
             keyword
@@ -121,9 +127,9 @@ class Search extends Component {
                         <div className="history-list">
                             {historyList.map((item, index) => {
                                 return (
-                                    <div className="item" key={index} onClick={this.searchFromHistory.bind(this, item)}>
-                                        <span className='text'>{item}</span>
-                                        <span className='close'>×</span>
+                                    <div className="item" key={index}>
+                                        <span className='text' onClick={this.searchFromHistory.bind(this, item)}>{item}</span>
+                                        <span className='close' onClick={this.removeSearchHistory.bind(this, index)}>×</span>
                                     </div>
                                 )
                             })}
